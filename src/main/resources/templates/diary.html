@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日記記録</title>
+    <link rel="stylesheet" th:href="@{/css/diary.css}">
+</head>
+<body>
+    <h2>ようこそ、日記ページへ</h2>
+
+    <form th:action="@{/diary}" method="post" th:object="${diary}">
+        <label>タイトル：</label><br>
+        <input type="text" th:field="*{title}" required/><br>
+
+        <label>本文：</label><br>
+        <textarea th:field="*{content}" rows="5" cols="40" required></textarea><br>
+
+        <button type="submit">記録する</button>
+    </form>
+
+    <hr>
+    <h3>これまでの日記</h3>
+    <ul>
+        <li th:each="d : ${diaries}">
+            <strong th:text="${d.title}">タイトル</strong>（<span th:text="${#temporals.format(d.createdAt, 'yyyy/MM/dd HH:mm')}"></span>）<br>
+            <p th:text="${d.content}">本文</p>
+            <hr>
+        </li>
+    </ul>
+</body>
+</html>

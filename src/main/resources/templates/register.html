@@ -2,18 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>新規ユーザー登録</title>
+    <title>新規登録</title>
+    <!-- 外部CSSを読み込む -->
+    <link rel="stylesheet" th:href="@{/css/register.css}" />
 </head>
 <body>
-    <h2>ユーザー登録</h2>
-    <form th:action="@{/register}" th:object="${user}" method="post">
-        <label>ユーザー名：</label>
-        <input type="text" th:field="*{username}" required><br>
+    <div class="register-container">
+        <h2>新規ユーザー登録</h2>
 
-        <label>パスワード：</label>
-        <input type="password" th:field="*{password}" required><br>
+        <!-- エラーメッセージ表示 -->
+        <p th:if="${errorMessage}" th:text="${errorMessage}" class="error-message"></p>
 
-        <button type="submit">登録</button>
-    </form>
+        <form th:action="@{/register}" method="post" th:object="${user}">
+            <label>ユーザー名：</label>
+            <input type="text" th:field="*{username}" /><br>
+
+            <label>パスワード：</label>
+            <input type="password" th:field="*{password}" /><br>
+
+            <button type="submit">登録</button>
+        </form>
+
+        <p><a th:href="@{/login}">ログインはこちら</a></p>
+    </div>
 </body>
 </html>

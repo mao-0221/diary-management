@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.taskmanager.entity.User;
 import com.example.taskmanager.repository.UserRepository;
 
-
 @Controller
 public class UserController {
 
@@ -28,7 +27,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String processRegistration(@ModelAttribute User user) {
+    public String processRegistration(@ModelAttribute User user, Model model) {
+        // 既存ユーザー名チェック
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            model.addAttribute("errorMessage", "このユーザー名は既に登録されています");
+            return "register";
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:/login";
