@@ -28,6 +28,8 @@ public class Diary {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    
+    
 
     @PrePersist
     public void prePersist() {

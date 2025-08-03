@@ -10,6 +10,9 @@
         <h2>ようこそ、日記ページへ</h2>
 
         <form th:action="@{/diary}" method="post" th:object="${diary}">
+			<!--編集時はid含める-->
+			<input type="hidden" th:field="*{id}" />
+			
             <label>タイトル：</label><br>
             <input type="text" th:field="*{title}" required/><br>
 
@@ -26,6 +29,17 @@
                 <strong th:text="${d.title}">タイトル</strong>
                 （<span th:text="${#temporals.format(d.createdAt, 'yyyy/MM/dd HH:mm')}"></span>）<br>
                 <p th:text="${d.content}">本文</p>
+				
+				<div>
+				     <!-- 編集リンク -->
+					 <a th:href="@{'/diary/edit/' + ${d.id}}" class="edit-button">編集</a>
+
+				     <!-- 削除フォーム -->
+				     <form th:action="@{'/diary/delete/' + ${d.id}}" method="post" style="display:inline;">
+				           <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
+				     </form>
+				</div>
+				
                 <hr>
             </li>
         </ul>
