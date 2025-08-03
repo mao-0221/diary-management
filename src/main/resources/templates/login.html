@@ -7,6 +7,11 @@
 </head>
 <body>
 
+    <!-- ログアウトメッセージ -->
+    <div th:if="${param.logout}" class="info-message">
+        <p>ログアウトしました。</p>
+    </div>
+
     <!-- エラーメッセージ -->
     <div th:if="${loginError}" class="error-message">
         <p th:text="${loginError}"></p>
@@ -15,16 +20,17 @@
     <form th:action="@{/login}" method="post">
         <label>ユーザー名：</label><br>
         <input type="text" name="username"><br>
+
         <label>パスワード：</label><br>
         <input type="password" name="password"><br>
-        <button type="submit">ログイン</button>
+
+        <button type="submit" class="login-button">ログイン</button>
     </form>
 
-    <hr>
-    <p>初めての方はこちら</p>
-    <a th:href="@{/register}">
-        <button>新規登録</button>
-    </a>
+    <div class="register-section">
+        <p>初めての方はこちら</p>
+        <a th:href="@{/register}" class="register-button">新規登録</a>
+    </div>
 
 </body>
 </html>

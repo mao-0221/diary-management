@@ -1,43 +1,74 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #eef2f5;
+    color: #333;
+    padding: 2em;
     text-align: center;
 }
 
-.register-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 50px auto;
+form {
+    background-color: #fff;
+    padding: 1.5em 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    margin-bottom: 1em;
     width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
-input {
-    width: 90%;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 5px 15px;
-    background-color: #4CAF50;
+.login-button {
+    background-color: #8e44ad;
     color: white;
+    padding: 10px 20px;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 4px;
+    font-weight: bold;
+    width: 100%;
 }
 
-button:hover {
-    background-color: #45a049;
+.login-button:hover {
+    background-color: #6c3483;
+}
+
+.register-section {
+    margin-top: 20px;
+}
+
+.register-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2980b9;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.register-button:hover {
+    background-color: #1c6ca1;
 }
 
 .error-message {
-    color: red;
-    font-weight: bold;
+    color: #c0392b;
+    margin-bottom: 1em;
+}
+
+.info-message {
+    color: #2980b9;
+    margin-bottom: 1em;
 }
